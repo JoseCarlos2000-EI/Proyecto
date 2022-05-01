@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var $contain_products=$("#catalog-products");
+    var $load=$("#loader");
     $.ajax({
         url:UrlListProducto,
         method:"GET",
@@ -21,9 +22,9 @@ $(document).ready(function() {
                     +'<div class="product-description d-flex align-items-center justify-content-between">'
                         +'<div class="product-meta-data">'
                             +'<div class="line"></div>'
-                            +'<p class="product-price">S/. 180.00</p>'
-                            +'<a href="product-details.html">'
-                                +'<h6>Modern Chair</h6>'
+                            +'<p class="product-price">S/. '+producto.price+'</p>'
+                            +'<a href="'+producto.urlDetalle+'">'
+                                +'<h6>'+producto.name+'</h6>'
                             +'</a>'
                         +'</div>'
                         
@@ -36,7 +37,7 @@ $(document).ready(function() {
                                 +'<i class="fa fa-star" aria-hidden="true"></i>'
                             +'</div>'
                             +'<div class="cart">'
-                                +'<a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="" alt=""></a>'
+                                +'<a href="'+producto.urlDetalle+'" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="/static/base/img/core-img/cart.png" alt=""></a>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
@@ -45,6 +46,8 @@ $(document).ready(function() {
             });
             console.log(html);
             $contain_products.html(html);
+            $load.hide();
+            
         },
         error: function(){
             alert("Error");

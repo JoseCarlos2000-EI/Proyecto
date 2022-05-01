@@ -17,11 +17,12 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{%static 'base/css/core-style.css'%}">
-    <link rel="stylesheet" href="{% static 'custom/style.css'%}">
+    <link rel="stylesheet" href="{% static 'custom/css/style.css'%}">
 
 </head>
 
 <body>
+    
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -70,11 +71,12 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="index.html">Inicio</a></li>
-                    <!---
+                    <li class="active"><a href="{%url 'inicio:inicio'%}">Inicio</a></li>
+                   
                     <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="events.html">Eventos</a></li> -->
-                    <li><a href="shop.html">Tienda</a></li>
+                     <!---
+                    <li><a href="events.html">Eventos</a></li> 
+                    <li><a href="shop.html">Tienda</a></li>-->
                 
                 </ul>
             </nav>
@@ -88,8 +90,10 @@
             -->
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
+                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
+                <!---
                 <a href="checkout.html"class="fav-nav"><img src="{% static 'base/img/core-img/favorites.png'%}" alt=""> Checkout</a>
+                -->
                 <a href="#" class="search-nav"><img src="{% static 'base/img/core-img/search.png'%}" alt=""> Buscar</a>
             </div>
             <!-- Social Button -->
@@ -178,7 +182,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Inicio</a>
+                                            <a class="nav-link" href="{%url 'inicio:inicio'%}">Inicio</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="shop.html">Tienda</a>
@@ -186,9 +190,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
                                         <li class="nav-item">
                                             <a class="nav-link" href="cart.html">Carrito</a>
                                         </li>
+                                        <!---
                                         <li class="nav-item">
                                             <a class="nav-link" href="checkout.html">Checkout</a>
                                         </li>
+                                    -->
                                     </ul>
                                 </div>
                             </nav>

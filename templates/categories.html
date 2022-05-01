@@ -17,11 +17,13 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{%static 'base/css/core-style.css'%}">
-    <link rel="stylesheet" href="{% static 'custom/style.css'%}">
+    <link rel="stylesheet" href="{% static 'custom/css/style.css'%}">
 
 </head>
 
 <body>
+    <div id="loader" class="loader"> 
+    </div>
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -71,11 +73,12 @@
             <nav class="amado-nav">
                 <ul>
                     <li><a href="{%url 'inicio:inicio'%}">Inicio</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
                     <li class="active"><a href="">Categorias</a></li>
                     <!---
                     <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="events.html">Eventos</a></li> -->
-                    <li><a href="">Tienda</a></li>
+                    <li><a href="events.html">Eventos</a></li> 
+                    <li><a href="">Tienda</a></li>-->
                 
                 </ul>
             </nav>
@@ -89,8 +92,8 @@
             -->
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
-                <a href="checkout.html"class="fav-nav"><img src="{% static 'base/img/core-img/favorites.png'%}" alt=""> Checkout</a>
+                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
+                <a href="{%url 'producto:checkout'%}"class="fav-nav"><img src="{% static 'base/img/core-img/favorites.png'%}" alt=""> Checkout</a>
                 <a href="#" class="search-nav"><img src="{% static 'base/img/core-img/search.png'%}" alt=""> Buscar</a>
             </div>
             <!-- Social Button -->
@@ -105,7 +108,7 @@
 
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix" >
-            <div id="catalog-categories"  class="amado-pro-catagory clearfix">
+            <div id="catalog-categories" style="display: flex; flex-wrap:wrap;object-fit:cover"  class="amado-pro-catagory clearfix">
 
                 <!-- Single Catagory -->
                 <!---

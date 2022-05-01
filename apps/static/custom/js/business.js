@@ -1,4 +1,5 @@
     var $contain_business=$("#catalog-business");
+    var $load=$("#loader");
     $.ajax({
         url: UrlListEmpresa,
         method: 'GET',
@@ -19,6 +20,7 @@
          });
          console.log(html);
          $contain_business.html(html);
+         $load.hide();
         },
         error: function(){
             alert('Error');

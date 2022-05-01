@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var $contain_categories=$("#catalog-categories");
+    var $load=$("#loader");
+    
     $.ajax({
         url: UrlListaCategorias,
         method: 'GET',
@@ -7,6 +9,7 @@ $(document).ready(function() {
         success: function(data){
             console.log(data);
             var html="";
+
             data.forEach(function (categories){
                 console.log(categories.name);
                 html=html+ '<div class="single-products-catagory clearfix">'
@@ -22,6 +25,7 @@ $(document).ready(function() {
          });
          console.log(html);
          $contain_categories.html(html);
+         $load.hide();
         },
         error: function(){
             alert("Error");
