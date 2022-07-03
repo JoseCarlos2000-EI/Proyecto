@@ -1,14 +1,24 @@
 $(document).ready(function() {
     var $contain_product_details_1=$("#Product-Details-1");
     var $contain_product_details_2=$("#Product-Details-2");
+    var $item_product = $("#AgregaItem");
+    var $qty = $("#qty");
     var $load=$("#loader");
-    console.log(idProducto);
+    if (localStorage.getItem("carrito")!=null){
+        var carrito = JSON.parse(localStorage.getItem("carrito"));
+        console.log(carrito);
+    }
+    else{
+        var carrito = new Array(); 
+    }
+     
+    var item = {};
     $.ajax({
         url:UrlProductoDetalle,
         method: 'GET',
         data:{"idProducto":idProducto},
         success: function(data){
-            console.log(data);
+            //console.log(data);
             var html1="";
             var html2="";
             data.forEach(function (producto){
@@ -68,10 +78,48 @@ $(document).ready(function() {
         +'<div class="short_overview my-5">'
             +'<p>'+producto.description+'</p>'
        +'</div>';
+                item = {
+                    "id": producto.id,
+                    "name": producto.name,
+                    "price": producto.price,
+                    "image": producto.image1
+                };
+                console.log(item);
             });
+
             $contain_product_details_1.html(html1);
             $contain_product_details_2.html(html2);
             $load.hide();
+        },
+        complete: function(){
+            $item_product.click(function(){    
+            
+            if (carrito.length > 0){
+                carrito.forEach(function(p_item){
+                    if(p_item.id === item.id){
+                        p_item.quantity += parseInt($qty.val()); 
+                                           
+                        
+                    }
+                    
+                    else{
+                        if (((carrito.filter(i => i.id === item.id).length) ? true :false) === false)
+                        {
+                            item.quantity = parseInt($qty.val());
+                            carrito.push(item); 
+                        }
+                    }
+                })   
+            }
+            else{
+                item.quantity = parseInt($qty.val());
+                carrito.push(item);
+            }               
+
+            localStorage.setItem("carrito", JSON.stringify(carrito)); 
+
+            });
+           
         },
         error: function(){
             alert("Error");

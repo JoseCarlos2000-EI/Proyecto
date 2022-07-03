@@ -22,6 +22,10 @@
 </head>
 
 <body>
+    <a href="https://wa.me/51950857035?text=Me%20gustaría%20contratar%20un%20servicio%20" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
+    <div  class"icon-support" style="position:fixed;bottom:115px;right:2px;z-index:99;">
+        <img width="120px"  src="http://127.0.0.1:8000/media/anuncio/support-icon.png">
+    </div>
     <div id="loader" class="loader"></div>
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
@@ -50,7 +54,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="{% static 'base/img/core-img/logo.png'%}" alt=""></a>
+                <a href="{%url 'inicio:inicio'%}"><img src="{% static 'base/img/core-img/logo_principal.png'%}" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -59,20 +63,20 @@
         </div>
 
         <!-- Header Area Start -->
-        <header class="header-area clearfix">
+        <header class="header-area clearfix" style="padding-right:25px">
             <!-- Close Icon -->
             <div class="nav-close">
                 <i class="fa fa-close" aria-hidden="true"></i>
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="{% static 'base/img/core-img/logo.png'%}" alt=""></a>
+                <a href="{%url 'inicio:inicio'%}"><img src="{% static 'base/img/core-img/logo_principal.png'%}" alt=""></a>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li><a href="{%url 'inicio:inicio'%}">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
+                   <!--<li><a href="about.html">Sobre Nosotros</a></li>-->
                     <!---
                     <li><a href="events.html">Eventos</a></li>
                     -->
@@ -90,7 +94,7 @@
             -->
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
+                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(<span id="cantidad_items"></span>)</span></a>
                 <a href="{%url 'producto:checkout'%}"class="fav-nav"><img src="{% static 'base/img/core-img/favorites.png'%}" alt=""> Checkout</a>
                 <a href="#" class="search-nav"><img src="{% static 'base/img/core-img/search.png'%}" alt=""> Buscar</a>
             </div>
@@ -101,17 +105,20 @@
                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
+            <div id="anuncios" class="anuncios">
+                
+            </div>
         </header>
         <!-- Header Area End -->
-
+<!--
         <div class="shop_sidebar_area">
 
-            <!-- ##### Single Widget ##### -->
-            <div class="widget catagory mb-50">
-                <!-- Widget Title -->
+           
+
                 <h6 class="widget-title mb-30">Categorías</h6>
 
-                <!--  Catagories  -->
+                
+                
                 <div class="catagories-menu">
                     <ul>
                         <li class="active"><a href="#">Ipsum</a></li>
@@ -127,12 +134,12 @@
 
 
 
-            <!-- ##### Single Widget ##### -->
+      
 
         
-            <!-- ##### Single Widget ##### -->
+       
             <div class="widget price mb-50">
-                <!-- Widget Title -->
+             
                 <h6 class="widget-title mb-30">Precio</h6>
 
                 <div class="widget-desc">
@@ -147,7 +154,7 @@
                 </div>
             </div>
         </div>
-    
+    -->
         <div class="amado_product_area section-padding-100">
             <div class="container-fluid">
                 <div id="catalog-products" class="row">
@@ -169,15 +176,15 @@
                 <!-- Newsletter Text -->
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="newsletter-text mb-100">
-                        <h2>Subscribe for a <span>25% Discount</span></h2>
-                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
+                        <h2>Suscríbete para un <span>25% de descuento</span></h2>
+                        <p>Hola, llegaste aquí por algo. Regístrate y súmate a nuestros más de 500 suscriptores y obtén este descuento en tu próximo pedido. Recuerda que tu suscripción te permite acceder a otros beneficios como eventos y anuncios exclusivos.</p>
                     </div>
                 </div>
                 <!-- Newsletter Form -->
                 <div class="col-12 col-lg-6 col-xl-5">
                     <div class="newsletter-form mb-100">
                         <form action="#" method="post">
-                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
+                            <input type="email" name="email" class="nl-email" placeholder="Escribe tu correo">
                             <input type="submit" value="Subscribe">
                         </form>
                     </div>
@@ -196,7 +203,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="{% static 'base/img/core-img/logo2.png'%}" alt=""></a>
+                            <a href="index.html"><img src="{% static 'base/img/core-img/logo_principal.png'%}"alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -234,6 +241,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
             </div>
         </div>
     </footer>
+   
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
@@ -249,8 +257,22 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <!--Obtener Productos-->
     <script type="text/javascript">
         var UrlListProducto="{%url 'producto:ListaProductos'%}";
+        var UrlAnuncios="{%url 'categoria:anuncios'%}";
         var idEmpresa = {{idEmpresa}};
         var idCategoria = {{idCategoria}};
+        var carrito = JSON.parse(localStorage.getItem("carrito"));
+        var canti;
+        
+        if (carrito===null){
+            canti=0;
+        }
+        else{
+            canti=carrito.length;
+        }
+
+        var $canti_items = $("#cantidad_items");
+        localStorage.setItem("number_items",canti);
+        $canti_items.html(canti);
     </script>
     <script src="{% static 'custom/js/products.js'%}"></script>
 

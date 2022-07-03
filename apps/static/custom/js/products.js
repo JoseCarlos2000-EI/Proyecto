@@ -1,6 +1,8 @@
 $(document).ready(function() {
     var $contain_products=$("#catalog-products");
+    var $contain_anuncios=$('#anuncios');
     var $load=$("#loader");
+    //Get Productos
     $.ajax({
         url:UrlListProducto,
         method:"GET",
@@ -44,10 +46,30 @@ $(document).ready(function() {
                 +'</div>'
             +'</div>';
             });
+            
             console.log(html);
             $contain_products.html(html);
             $load.hide();
             
+        },
+        error: function(){
+            alert("Error");
+        }
+    });
+    //Get Anuncios
+    $.ajax({
+        method: 'GET',
+        url: UrlAnuncios,
+        data:{
+            "idEmpresa":idEmpresa
+        },
+        success: function(data){
+            var html='';
+            data.forEach(function(anuncio){
+                html+='<img src="'+anuncio.image1+'">'
+                +'<img src="'+anuncio.image2+'"></img>';
+            });
+            $contain_anuncios.html(html);
         },
         error: function(){
             alert("Error");

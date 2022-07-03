@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from apps.categoria.models import Categoria
+from apps.categoria.models import Anuncio
 from apps.producto.models import Producto
 from django.urls import reverse
 
@@ -20,7 +21,14 @@ class CategoriaSerializer(serializers.ModelSerializer):
     def get_urlTienda(self, categoria):
         if categoria.id:
             url = reverse('producto:tienda', kwargs={'id': categoria.id})
-            return url            
+            return url       
+
+
+class AnunciosSerializer(serializers.ModelSerializer): 
+    class Meta:
+        model = Anuncio
+        fields = '__all__'
+
 
             
 

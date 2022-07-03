@@ -17,11 +17,17 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{%static 'base/css/core-style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'custom/css/style.css'%}">
+
 
 </head>
 
 <body>
+    <a href="https://wa.me/51950857035?text=Me%20gustaría%20contratar%20un%20servicio%20" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
+	<div  class"icon-support" style="position:fixed;bottom:115px;right:2px;z-index:99;">
+        <img width="120px"  src="http://127.0.0.1:8000/media/anuncio/support-icon.png">
+    </div>
     
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
@@ -50,7 +56,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="{% static 'base/img/core-img/logo.png'%}" alt=""></a>
+                <a href="{%url 'inicio:inicio'%}"><img src="{% static 'base/img/core-img/logo_principal.png'%}" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -66,14 +72,14 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="{% static 'base/img/core-img/logo.png'%}" alt=""></a>
+                <a href="{%url 'inicio:inicio'%}"><img src="{% static 'base/img/core-img/logo_principal.png'%}" alt=""></a>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><a href="{%url 'inicio:inicio'%}">Inicio</a></li>
                    
-                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <!--<li><a href="about.html">Sobre Nosotros</a></li>-->
                      <!---
                     <li><a href="events.html">Eventos</a></li> 
                     <li><a href="shop.html">Tienda</a></li>-->
@@ -90,7 +96,7 @@
             -->
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(0)</span></a>
+                <a href="{%url 'producto:carrito'%}" class="cart-nav"><img src="{% static 'base/img/core-img/cart.png'%}" alt=""> Carrito <span>(<span id="cantidad_items"></span>)</span></a>
                 <!---
                 <a href="checkout.html"class="fav-nav"><img src="{% static 'base/img/core-img/favorites.png'%}" alt=""> Checkout</a>
                 -->
@@ -137,15 +143,15 @@
                 <!-- Newsletter Text -->
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="newsletter-text mb-100">
-                        <h2>Subscribe for a <span>25% Discount</span></h2>
-                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
+                        <h2>Suscríbete para un <span>25% de descuento</span></h2>
+                        <p>Hola, llegaste aquí por algo. Regístrate y súmate a nuestros más de 500 suscriptores y obtén este descuento en tu próximo pedido. Recuerda que tu suscripción te permite acceder a otros beneficios como eventos y anuncios exclusivos.</p>
                     </div>
                 </div>
                 <!-- Newsletter Form -->
                 <div class="col-12 col-lg-6 col-xl-5">
                     <div class="newsletter-form mb-100">
                         <form action="#" method="post">
-                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
+                            <input type="email" name="email" class="nl-email" placeholder="Escribe tu correo">
                             <input type="submit" value="Subscribe">
                         </form>
                     </div>
@@ -164,7 +170,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="{% static 'base/img/core-img/logo2.png'%}" alt=""></a>
+                            <a href="index.html"><img src="{% static 'base/img/core-img/logo_principal.png'%}" alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -219,6 +225,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <!--Listar Empresas-->
     <script type="text/javascript">
             var UrlListEmpresa="{% url 'empresa:empresaAPI' %}";
+            var carrito = JSON.parse(localStorage.getItem("carrito"));
+            var canti;
+            
+            if (carrito===null){
+                canti=0;
+            }
+            else{
+                canti=carrito.length;
+            }
+
+            var $canti_items = $("#cantidad_items");
+            localStorage.setItem("number_items",canti);
+            $canti_items.html(canti);
     </script>
     <script src="{% static 'custom/js/business.js'%}"></script>
 
