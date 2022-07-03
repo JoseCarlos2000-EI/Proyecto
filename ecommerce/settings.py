@@ -13,8 +13,8 @@ SECRET_KEY = '%7_$qq_%)%^iao@cgm3y&vomsj76!jb2u=mp6j)oehkgf@ti%5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 """Not Deploy"""
-"""DEBUG = True"""
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #Deploy
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -78,13 +78,14 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 """Not Deploy"""
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 """
 import dj_database_url
 from decouple import config
@@ -93,6 +94,7 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+"""
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -130,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 """Not Deploy"""
-"""
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "apps", "static")
 ]
@@ -140,8 +142,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-"""
 
+
+""""
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -149,3 +152,4 @@ STATICFILES_DIRS = (
 )
 #Deploy
 STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
+"""
